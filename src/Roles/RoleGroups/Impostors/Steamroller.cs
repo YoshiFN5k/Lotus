@@ -58,7 +58,7 @@ public class Steamroller : Impostor
 
     protected override RoleModifier Modify(RoleModifier roleModifier) =>
         base.Modify(roleModifier)
-            .RoleColor(new Color(0.55f, 0f, 0.3f, 1f))
+            .RoleColor(new Color(1.0f, 0f, 0f, 0f))
             .CanVent(canVent)
             .OptionOverride(Override.ImpostorLightMod, () => AUSettings.CrewLightMod(), () => !impostorVision)
             .OptionOverride(Override.KillCooldown, () => KillCooldown - (kills * decreaseBy));
