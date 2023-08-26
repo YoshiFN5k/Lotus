@@ -90,6 +90,6 @@ public class Barbarian: Impostor
 
         return base.Modify(roleModifier)
             .RoleAbilityFlags(flags)
-            .RoleColor(new Color(0.66f, 0.4f, 0.16f));
+            .RoleColor(new Color(1.0f, 0.0f, 0.0f));
     }
 }
