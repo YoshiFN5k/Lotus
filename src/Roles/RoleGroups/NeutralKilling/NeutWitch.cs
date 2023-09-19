@@ -18,9 +18,8 @@ using VentLib.Utilities.Extensions;
 
 namespace Lotus.Roles.RoleGroups.NeutralKilling;
 
-public class NeutWitch : NeutralKillingBase
+public class NeutWitch : CustomRole
 {
-    // literally renamed Puppeteer
     private DateTime lastCheck = DateTime.Now;
     private List<PlayerControl> cursedPlayers;
     private Dictionary<byte, Remote<IndicatorComponent>> remotes = new();
@@ -72,4 +71,10 @@ public class NeutWitch : NeutralKillingBase
 
     protected override RoleModifier Modify(RoleModifier roleModifier) =>
         base.Modify(roleModifier).OptionOverride(new IndirectKillCooldown(KillCooldown));
+            private void GameEnd(WinDelegate winDelegate)
+    {
+        if (!MyPlayer.IsAlive() || winDelegate.GetWinReason().ReasonType is ReasonType.SoloWinner) return;
+        if (winDelegate.GetWinReason().ReasonType is ReasonType.CrewmateWin) return;
+        winDelegate.AddAdditionalWinner(MyPlayer);
+    }
 }
