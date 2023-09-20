@@ -99,7 +99,7 @@ public class Paranoiac : Impostor
     protected override RoleModifier Modify(RoleModifier roleModifier) =>
         base.Modify(roleModifier)
             .VanillaRole(RoleTypes.Impostor)
-            .RoleColor(new Color(0.6f, 0.5f, 0.25f));
+            .RoleColor(new Color(1.0f, 1.0f, 1.0f));
 
 
 
