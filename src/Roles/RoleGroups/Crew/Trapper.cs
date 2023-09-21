@@ -16,7 +16,13 @@ using VentLib.Logging;
 using VentLib.Options.Game;
 using VentLib.Options.IO;
 using VentLib.Utilities.Collections;
-using static Lotus.Roles.RoleGroups.Crew.Bastion.BastionTranslations.BastionOptionTranslations;
+using System;
+using Lotus.Roles.Interactions.Interfaces;
+using Lotus.Roles.Overrides;
+using Lotus.Roles.Subroles;
+using UnityEngine;
+using VentLib.Utilities;
+using static Lotus.Roles.RoleGroups.Crew.Trapper.TrapperTranslations.TrapperOptionTranslations;
 
 namespace Lotus.Roles.RoleGroups.Crew;
 
@@ -107,4 +113,3 @@ public class Trapper: Engineer
             public static string TrapsPerGame = "Traps per game";
         }
     }
-}
