@@ -8,7 +8,7 @@ Just as the primary Lotus mod is not affiliated with Innersloth, neither is this
 
 ## Miscellaneous
 
-Currently, this version has no unique chat (or any other) functions. View the <a href = "https://github.com/ImaMapleTree/Lotus">official Lotus page</a> to view any existing chat functions, name functions, or other.
+Currently, this version has no unique chat (or any other non-role) functions. View the <a href = "https://github.com/ImaMapleTree/Lotus">official Lotus page</a> to view any existing chat functions, name functions, or other.
 
 ## Roles
 
