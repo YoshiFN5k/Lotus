@@ -73,8 +73,7 @@ public class NeutWitch : CustomRole
         base.Modify(roleModifier).OptionOverride(new IndirectKillCooldown(KillCooldown));
             private void GameEnd(WinDelegate winDelegate)
     {
-        if (!MyPlayer.IsAlive() || winDelegate.GetWinReason().ReasonType is ReasonType.SoloWinner) return;
-        if (winDelegate.GetWinReason().ReasonType is ReasonType.CrewmateWin) return;
+        if (!MyPlayer.IsAlive() || winDelegate.GetWinReason().ReasonType is ReasonType.CrewmateWin) return;
         winDelegate.AddAdditionalWinner(MyPlayer);
     }
 }
