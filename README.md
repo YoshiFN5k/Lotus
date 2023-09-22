@@ -1,7 +1,3 @@
-<p align="center">
-  <img width="" height="400" src="https://media.discordapp.net/attachments/1105589440010788885/1118532952733798500/Project_Lotus_Icon_2.png?width=671&height=671">
-</p>
-
 ## Affiliation
 
 Just as the primary Lotus mod is not affiliated with Innersloth, neither is this one. However, do NOT join the official Lotus server for bug reports. Unfortunately, we do not have an existing Discord server yet.
