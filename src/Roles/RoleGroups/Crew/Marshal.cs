@@ -42,7 +42,7 @@ public class Marshal: Crewmate
     protected override void PostSetup()
     {
         remainingVotes = totalVotes;
-        if (!hasPocketMeeting) MyPlayer.NameModel().GetComponentHolder<CounterHolder>().RemoveLast();
+        if (!ExtraMarshalMeetings) MyPlayer.NameModel().GetComponentHolder<CounterHolder>().RemoveLast();
     }
 
     [RoleAction(RoleActionType.RoundEnd)]
@@ -50,7 +50,7 @@ public class Marshal: Crewmate
     {
         if (!updateLock.AcquireLock()) return;
         if (SabotagePatch.CurrentSabotage != null) return;
-        if (!hasPocketMeeting || remainingVotes <= 0) return;
+        if (!ExtraMarshalMeetings || remainingVotes <= 0) return;
         if (revealed = false) return;
         remainingVotes--;
         MyPlayer.CmdReportDeadBody(null);
@@ -91,7 +91,7 @@ public class Marshal: Crewmate
                 .AddIntRange(0, 10, 1, 1)
                 .BindInt(i => additionalVotes = i)
                 .Build())
-            .SubOption(sub => sub.KeyName("ExtraMarshalMeetings", Translations.Options.ExtraMarshalMeetings)
+            .SubOption(sub => sub.KeyName("Extra Marshal Meetings", Translations.Options.ExtraMarshalMeetings)
                 .AddOnOffValues()
                 .BindBool(b => ExtraMarshalMeetings = b)
                 .ShowSubOptionPredicate(o => (bool)o)
