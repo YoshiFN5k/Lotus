@@ -45,3 +45,7 @@ Pirate renamed to Doomsayer and recoloured
 Other changes:
 Revealed roles should no longer be guessable.
 ```
+## Future Plans:
+Everything we are either planning to add to the mod or that is already in the mod is documented on this google doc: https://docs.google.com/spreadsheets/d/1YrOCMbI-455rk5XPDLBt5HM4-9uvXjjPVm47fRRzjTI/edit
+Please note: The google doc is updated frequently with new ideas for the mod.
+Outside of that, there are plans to add full proper crediting to the github, google doc and in game with the /r command.
