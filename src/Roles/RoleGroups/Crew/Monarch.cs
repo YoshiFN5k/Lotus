@@ -11,6 +11,7 @@ using VentLib.Logging;
 using VentLib.Options.Game;
 using VentLib.Utilities;
 using VentLib.Utilities.Optionals;
+using VentLib.Localization.Attributes;
 
 namespace Lotus.Roles.RoleGroups.Crew;
 
