@@ -20,4 +20,13 @@ public class Monarch: Crewmate
 {
     private bool targetSelected;
     private 
+
+    [RoleAction(RoleAction.MyVote)]
+    if (!targetSelected)
+    {
+        return;
+    }
+    else {
+        
+    }
 }
