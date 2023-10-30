@@ -15,18 +15,22 @@ using VentLib.Localization.Attributes;
 
 namespace Lotus.Roles.RoleGroups.Crew;
 
-[Localized("Roles")]
 public class Monarch: Crewmate
 {
     private bool targetSelected;
-    private 
+    private int maxKnights;
+    private int knightCount;
+    private bool skippedVote;
 
     [RoleAction(RoleAction.MyVote)]
-    if (!targetSelected)
-    {
+    if (result.VoteResultType.Skipped) {
+        skippedVote = true;
         return;
     }
-    else {
-        
+    if (!targetSelected && !skippedVote) {
+        targetSelected =
+        return;
     }
+    if (maxKnights == knightCount) return;
+
 }
