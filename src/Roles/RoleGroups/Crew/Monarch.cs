@@ -21,16 +21,46 @@ public class Monarch: Crewmate
     private int maxKnights;
     private int knightCount;
     private bool skippedVote;
+    private byte knightTarget = byte.MaxValue;
+
+    [RoleAction((RoleActionType.RoundStart))]
+    [RoleAction((RoleActionType.RoundEnd))]
+    {
+
+    }
 
     [RoleAction(RoleAction.MyVote)]
-    if (result.VoteResultType.Skipped) {
-        skippedVote = true;
-        return;
+    public void ChooseKnightTarget(Optional<PlayerControl> player, ActionHandle handle)
+    {
+        if (skippedVote || hasMadeGuess) return;
+        handle.Cancel();
+        VoteResult result = voteSelector.CastVote(player);
+        switch (result.VoteResultType)
+        {
+            case VoteResultType.None:
+                break;
+            case VoteResultType.Skipped:
+                if (targetSelected) 
+                {
+                    targetSelected = false;
+                    knightTarget = 
+                } else skippedVote = true;
+                break;
+            case VoteResultType.Selected:
+                knightTarget = result.Selected;
+                targetSelected = true;
+                GuesserHandler(Translations.KnightQueryText.Formatted(Players.FindPlayerById(result.Selected)?.name)).Send(MyPlayer);
+                break;
+            case VoteResultType.Confirmed:
+                
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
-    if (!targetSelected && !skippedVote) {
-        targetSelected =
-        return;
-    }
-    if (maxKnights == knightCount) return;
 
+    [RoleAction(MeetingCalled)]
+    {
+
+    }
 }
