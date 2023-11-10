@@ -13,37 +13,7 @@ To preserve conciseness, please see the <a href = "https://github.com/ImaMapleTr
 ## Changes made in this fork:
 
 ```
-New roles:
-Crew roles:
-Trapper
-Marshal
-Impostor roles:
-Agent
-Barbarian
-Conjurer
-Paranoiac
-Steamroller
-Wraith
 
-Unused PL roles added:
-Disruptor (Also known as Conman)
-NeutWitch (Reworked to win if they survive to see crewmates lose)
-
-Reworked roles:
-Crew roles:
-Dictator renamed to Prosecutor and no longer dies when prosecuting a crewmate.
-Impostor roles:
-Bounty Hunter now has a setting to get arrows pointing to their target.
-Neutral roles:
-Arsonist and Pyromaniac rework, Arsonist is now a Non-Killing Neutral however works the same as previously. Pyromaniac is Arsonist that can ignite at any time.
-
-Role renames/recolours:
-Plaguebearer/Pestilence recoloured
-Jackal recoloured
-Pirate renamed to Doomsayer and recoloured
-
-Other changes:
-Revealed roles should no longer be guessable.
 ```
 ## Future Plans:
 Everything we are either planning to add to the mod or that is already in the mod is documented on this google doc: https://docs.google.com/spreadsheets/d/1YrOCMbI-455rk5XPDLBt5HM4-9uvXjjPVm47fRRzjTI/edit
