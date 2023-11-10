@@ -1,4 +1,5 @@
 using Lotus.API;
+using Lotus.API.Odyssey;
 using Lotus.Roles.Internals.Attributes;
 using Lotus.Roles.Overrides;
 using Lotus.Roles.RoleGroups.Vanilla;
@@ -43,7 +44,7 @@ public class Monarch: Crewmate
                 if (targetSelected) 
                 {
                     targetSelected = false;
-                    knightTarget = 
+                    knightTarget = byte.MaxValue;
                 } else skippedVote = true;
                 break;
             case VoteResultType.Selected:
@@ -61,6 +62,11 @@ public class Monarch: Crewmate
 
     [RoleAction(MeetingCalled)]
     {
-
+        if (targetSelected)
+        {
+            MatchData.AssignSubrole(knightTarget, CustomRoleManager.Mods.Knighted)
+        }
+        targetSelected = false;
+        knightTarget = byte.MaxValue;
     }
 }
