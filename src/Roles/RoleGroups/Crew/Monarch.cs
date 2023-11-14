@@ -1,6 +1,8 @@
 using Lotus.API;
 using Lotus.API.Odyssey;
+using Lotus.Chat;
 using Lotus.Roles.Internals.Attributes;
+using Lotus.Internals.Trackers;
 using Lotus.Roles.Overrides;
 using Lotus.Roles.RoleGroups.Vanilla;
 using Lotus.Extensions;
@@ -24,6 +26,8 @@ public class Monarch: Crewmate
     private bool skippedVote;
     private byte knightTarget = byte.MaxValue;
 
+    protected ChatHandler MonarchAnnouncement(string message) => ChatHandler.Of(message, RoleColor.Colorize{Translations.MessageTitle}).LeftAlign();
+
     [RoleAction((RoleActionType.RoundStart))]
     [RoleAction((RoleActionType.RoundEnd))]
     {
@@ -35,6 +39,7 @@ public class Monarch: Crewmate
             targetSelected = false;
             maxKnights--;
             knightCount++;
+            MonarchAnnouncement(Translations.)
             }
             knightTarget = byte.MaxValue;
         }
@@ -60,7 +65,6 @@ public class Monarch: Crewmate
             case VoteResultType.Selected:
                 knightTarget = result.Selected;
                 targetSelected = true;
-                (Translations.KnightQueryText.Formatted(Players.FindPlayerById(result.Selected)?.name)).Send(MyPlayer);
                 break;
             case VoteResultType.Confirmed:
                 
@@ -72,6 +76,11 @@ public class Monarch: Crewmate
 
     [Localized(nameof(Monarch))]
     {
-        
+        public static string MessageTitle = "Game Event";
+    }
+
+    [Localized(nameof(MonarchGameEvent))]
+    {
+        public static string KnightingMessage = "{0} was knighted by the Monarch!"
     }
 }
