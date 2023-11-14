@@ -27,7 +27,17 @@ public class Monarch: Crewmate
     [RoleAction((RoleActionType.RoundStart))]
     [RoleAction((RoleActionType.RoundEnd))]
     {
-
+        public void ReturnFromBrazil() {
+            skippedVote = false;
+            if (targetSelected)
+            {
+            MatchData.AssignSubrole(knightTarget, CustomRoleManager.Mods.Knighted)
+            targetSelected = false;
+            maxKnights--;
+            knightCount++;
+            }
+            knightTarget = byte.MaxValue;
+        }
     }
 
     [RoleAction(RoleAction.MyVote)]
@@ -50,7 +60,7 @@ public class Monarch: Crewmate
             case VoteResultType.Selected:
                 knightTarget = result.Selected;
                 targetSelected = true;
-                GuesserHandler(Translations.KnightQueryText.Formatted(Players.FindPlayerById(result.Selected)?.name)).Send(MyPlayer);
+                (Translations.KnightQueryText.Formatted(Players.FindPlayerById(result.Selected)?.name)).Send(MyPlayer);
                 break;
             case VoteResultType.Confirmed:
                 
@@ -60,13 +70,8 @@ public class Monarch: Crewmate
         }
     }
 
-    [RoleAction(MeetingCalled)]
+    [Localized(nameof(Monarch))]
     {
-        if (targetSelected)
-        {
-            MatchData.AssignSubrole(knightTarget, CustomRoleManager.Mods.Knighted)
-        }
-        targetSelected = false;
-        knightTarget = byte.MaxValue;
+        
     }
 }

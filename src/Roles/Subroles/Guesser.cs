@@ -189,7 +189,7 @@ public class Guesser: CustomRole
         public static string GuessAnnouncementMessage = "The guesser has made a guess. {0} died.";
 
         [Localized(nameof(GuessRevealedMessage))]
-        public static string GuessRevealedMessage = "You cannot guess a player whos role is revealed!";
+        public static string GuessRevealedMessage = "You cannot guess a player whose role is revealed!";
 
         [Localized(ModConstants.Options)]
         public static class Options
