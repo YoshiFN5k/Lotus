@@ -21,25 +21,26 @@ namespace Lotus.Roles.RoleGroups.Crew;
 public class Monarch: Crewmate
 {
     private bool targetSelected;
+    private bool targetLocked;
     private int maxKnights;
     private int knightCount;
     private bool skippedVote;
     private byte knightTarget = byte.MaxValue;
 
-    protected ChatHandler MonarchAnnouncement(string message) => ChatHandler.Of(message, RoleColor.Colorize{Translations.MessageTitle}).LeftAlign();
+    protected ChatHandler MonarchMessage(string message) => ChatHandler.Of(message, RoleColor.Colorize{Translations.MessageTitle}).LeftAlign();
 
     [RoleAction((RoleActionType.RoundStart))]
     [RoleAction((RoleActionType.RoundEnd))]
     {
         public void ReturnFromBrazil() {
             skippedVote = false;
-            if (targetSelected)
+            if (targetLocked)
             {
             MatchData.AssignSubrole(knightTarget, CustomRoleManager.Mods.Knighted)
-            targetSelected = false;
+            targetLocked = false;
             maxKnights--;
             knightCount++;
-            MonarchAnnouncement(Translations.)
+            MonarchMessage(Translations.MonarchGameEvent.Formatted(Players.FindPlayerById(knightTarget)?.name))
             }
             knightTarget = byte.MaxValue;
         }
@@ -48,7 +49,7 @@ public class Monarch: Crewmate
     [RoleAction(RoleAction.MyVote)]
     public void ChooseKnightTarget(Optional<PlayerControl> player, ActionHandle handle)
     {
-        if (skippedVote || hasMadeGuess) return;
+        if (skippedVote || maxKnights = knightCount || ) return;
         handle.Cancel();
         VoteResult result = voteSelector.CastVote(player);
         switch (result.VoteResultType)
@@ -60,11 +61,17 @@ public class Monarch: Crewmate
                 {
                     targetSelected = false;
                     knightTarget = byte.MaxValue;
-                } else skippedVote = true;
+                    MonarchMessage(Translations.MonarchSkipSelectedExplanation.Formatted(Players.FindPlayerById(knightTarget)?.name)).Send(MyPlayer)
+                } else 
+                {
+                    skippedVote = true;
+                    MonarchMessage(Translations.)
+                }
                 break;
             case VoteResultType.Selected:
                 knightTarget = result.Selected;
                 targetSelected = true;
+                MonarchMessage(Translations.MonarchAntiIdiot.Formatted(Players.FindPlayerById(knightTarget)?.name)).Send(MyPlayer)
                 break;
             case VoteResultType.Confirmed:
                 
@@ -75,12 +82,26 @@ public class Monarch: Crewmate
     }
 
     [Localized(nameof(Monarch))]
+    private class Translations
     {
+        [Localized(nameof(Monarch))]
         public static string MessageTitle = "Game Event";
-    }
+        
 
-    [Localized(nameof(MonarchGameEvent))]
-    {
-        public static string KnightingMessage = "{0} was knighted by the Monarch!"
-    }
+        [Localized(nameof(MonarchGameEvent))]
+        public static string MonarchGameEvent = "{0} was knighted by the Monarch!"
+
+        [Localized(nameof(MonarchAntiIdiot))]
+        public static string MonarchAntiIdiot = "You are about to knight {0} in the next meeting. Vote {0} again to confirm your choice."
+
+        [Localized(nameof(MonarchSkipExplanation))]
+        public static string MonarchSkipSelectedExplanation = "You have deselected {0}. Skip again to vote normally, otherwise vote again to choose another player."
+        
+        [Localized(nameof(MonarchSkipped))]
+        public static string MonarchSkipped = "You hare decided to skip knighting a player in this meeting. You may now vote normally."
+        
+        [Localized(nameof(KnightConfirmed))]
+        public static string KnightConfirmed = "You have decided to knight {0}. You may now vote normally."
+
+
 }

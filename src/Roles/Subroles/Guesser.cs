@@ -186,7 +186,7 @@ public class Guesser: CustomRole
         public static string ErrorCompletingGuess = "There was an error when guessing. Your guess target has been reset.";
 
         [Localized(nameof(GuessAnnouncementMessage))]
-        public static string GuessAnnouncementMessage = "The guesser has made a guess. {0} died.";
+        public static string GuessAnnouncementMessage = "A guesser has made a guess. {0} died.";
 
         [Localized(nameof(GuessRevealedMessage))]
         public static string GuessRevealedMessage = "You cannot guess a player whose role is revealed!";
