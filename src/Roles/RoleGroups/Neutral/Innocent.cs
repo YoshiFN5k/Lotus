@@ -14,7 +14,7 @@ namespace Lotus.Roles.RoleGroups.Neutral;
 public class Innocent: NeutralKillingBase
 {
     [RoleAction(RoleActionType.Attack)]
-     public override bool TryGoPortugal(PlayerControl target)
+     public override void TrySelfPortugal(PlayerControl target)
     {
         
     }
