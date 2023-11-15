@@ -38,7 +38,6 @@ public class Monarch: Crewmate
             {
             MatchData.AssignSubrole(knightTarget, CustomRoleManager.Mods.Knighted)
             targetLocked = false;
-            maxKnights--;
             knightCount++;
             MonarchMessage(Translations.MonarchGameEvent.Formatted(Players.FindPlayerById(knightTarget)?.name))
             }
@@ -49,7 +48,8 @@ public class Monarch: Crewmate
     [RoleAction(RoleAction.MyVote)]
     public void ChooseKnightTarget(Optional<PlayerControl> player, ActionHandle handle)
     {
-        if (skippedVote || maxKnights = knightCount || ) return;
+        if (skippedVote || maxKnights = knightCount) return;
+        if (targetLocked) return;
         handle.Cancel();
         VoteResult result = voteSelector.CastVote(player);
         switch (result.VoteResultType)
@@ -61,11 +61,11 @@ public class Monarch: Crewmate
                 {
                     targetSelected = false;
                     knightTarget = byte.MaxValue;
-                    MonarchMessage(Translations.MonarchSkipSelectedExplanation.Formatted(Players.FindPlayerById(knightTarget)?.name)).Send(MyPlayer)
+                    MonarchMessage(Translations.MonarchSkipExplanation.Formatted(Players.FindPlayerById(knightTarget)?.name)).Send(MyPlayer)
                 } else 
                 {
                     skippedVote = true;
-                    MonarchMessage(Translations.)
+                    MonarchMessage(Translations.MonarchSkipped)
                 }
                 break;
             case VoteResultType.Selected:
@@ -74,7 +74,9 @@ public class Monarch: Crewmate
                 MonarchMessage(Translations.MonarchAntiIdiot.Formatted(Players.FindPlayerById(knightTarget)?.name)).Send(MyPlayer)
                 break;
             case VoteResultType.Confirmed:
-                
+                targetLocked = true;
+                targetSelected = false;
+                MonarchMessage(Translations.KnightConfirmed.Formatted(Players.FindPlayerById(knightTarget)?.name)).Send(MyPlayer)
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -86,22 +88,20 @@ public class Monarch: Crewmate
     {
         [Localized(nameof(Monarch))]
         public static string MessageTitle = "Game Event";
-        
 
         [Localized(nameof(MonarchGameEvent))]
-        public static string MonarchGameEvent = "{0} was knighted by the Monarch!"
+        public static string MonarchGameEvent = "{0} was knighted by the Monarch!";
 
         [Localized(nameof(MonarchAntiIdiot))]
-        public static string MonarchAntiIdiot = "You are about to knight {0} in the next meeting. Vote {0} again to confirm your choice."
+        public static string MonarchAntiIdiot = "You are about to knight {0} in the next meeting. Vote {0} again to confirm your choice.";
 
         [Localized(nameof(MonarchSkipExplanation))]
-        public static string MonarchSkipSelectedExplanation = "You have deselected {0}. Skip again to vote normally, otherwise vote again to choose another player."
+        public static string MonarchSkipExplanation = "You have deselected {0}. Skip again to vote normally, otherwise vote again to choose another player.";
         
         [Localized(nameof(MonarchSkipped))]
-        public static string MonarchSkipped = "You hare decided to skip knighting a player in this meeting. You may now vote normally."
+        public static string MonarchSkipped = "You hare decided to skip knighting a player in this meeting. You may now vote normally.";
         
         [Localized(nameof(KnightConfirmed))]
-        public static string KnightConfirmed = "You have decided to knight {0}. You may now vote normally."
-
-
+        public static string KnightConfirmed = "You have decided to knight {0}. You may now vote normally.";
+    }
 }
