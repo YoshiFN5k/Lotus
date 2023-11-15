@@ -12,5 +12,8 @@ namespace Lotus.Roles.RoleGroups.Neutral;
 
 public class Innocent: NeutralKillingBase
 {
-
+    [RoleAction(RoleActionType.Attack)]
+    {
+        
+    }
 }
