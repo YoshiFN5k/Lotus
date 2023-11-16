@@ -43,6 +43,7 @@ public class Monarch: Crewmate
             }
             knightTarget = byte.MaxValue;
         }
+        ReturnFromBrazil()
     }
 
     [RoleAction(RoleAction.MyVote)]
