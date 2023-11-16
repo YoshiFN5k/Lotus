@@ -21,7 +21,7 @@ public class Innocent : NeutralKillingBase
     public bool EatedItAll;
     public bool WEWINTHESE = false;
     public byte YourDefinitelyMurderer = byte.MaxValue;
-    [RoleAction((RoleActionType.RoundStart))]
+    [RoleAction((RoleActionType.RoundStart, ))]
     {
         public void NahNvm() 
         {
