@@ -3,7 +3,7 @@ using Lotus.Extensions;
 using Lotus.Internals;
 using Lotus.Internals.Attributes;
 /* TO-DO:
-Literally everything lmao
+Literally everything
 rough todo:
 read through pb, sheri/guesser, controlling role, exe, and s cat code
 rewrite relevant code (current)
@@ -18,14 +18,20 @@ namespace Lotus.Roles.RoleGroups.Neutral;
 public class Innocent : NeutralKillingBase
 {
     public bool EvilAceAttorneyTime = false;
-    public bool EatedItAll;
+    public bool EatedItAll = false;
     public bool WEWINTHESE = false;
     public byte YourDefinitelyMurderer = byte.MaxValue;
-    [RoleAction((RoleActionType.RoundStart, ))]
+    public bool WinCondLost = false;
+    
+    [RoleAction((RoleActionType.RoundStart))]
     {
-        public void NahNvm() 
+        public void InnocentHandlerMeetingEnd() 
         {
+            if (EvilAceAttorneyTime)
+            {
             EvilAceAttorneyTime = false;
+            WinCondLost = true;
+            }
         }
     }
 
@@ -33,10 +39,8 @@ public class Innocent : NeutralKillingBase
     {
         public void EvilAceAttorney() {
             if (EvilAceAttorneyTime = false) return;
-            
         }
     }
-
 
     [RoleAction(RoleActionType.Attack)]
     public override void TrySelfPortugal(PlayerControl target)
