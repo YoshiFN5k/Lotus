@@ -37,7 +37,7 @@ public class Jackal : NeutralKillingBase
 
     protected override RoleModifier Modify(RoleModifier roleModifier) =>
         base.Modify(roleModifier)
-            .RoleColor(new Color(0f, 0.0f, 1.0f))
+            .RoleColor(new Color(0.26f, 0.26f, 0.26f))
             .CanVent(canVent)
             .OptionOverride(Override.ImpostorLightMod, () => AUSettings.CrewLightMod(), () => !impostorVision);
 }
