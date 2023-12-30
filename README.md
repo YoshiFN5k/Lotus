@@ -13,7 +13,7 @@ To preserve conciseness, please see the <a href = "https://github.com/ImaMapleTr
 ## Changes made in this fork:
 
 ```
-Planned first version plans:
+Planned first version changes:
 Parity Cop
 Sentinel
 Handler
