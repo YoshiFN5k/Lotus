@@ -13,7 +13,17 @@ To preserve conciseness, please see the <a href = "https://github.com/ImaMapleTr
 ## Changes made in this fork:
 
 ```
-
+Planned first version plans:
+Parity Cop
+Sentinel
+Handler
+Monarch
+Ambusher
+Consigliere
+Blackmailer Rework
+Jackal Rework
+Stray
+Innocent
 ```
 ## Future Plans:
 Everything we are either planning to add to the mod or that is already in the mod is documented on this google doc: https://docs.google.com/spreadsheets/d/1YrOCMbI-455rk5XPDLBt5HM4-9uvXjjPVm47fRRzjTI/edit
