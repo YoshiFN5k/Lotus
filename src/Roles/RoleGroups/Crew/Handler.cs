@@ -11,3 +11,20 @@ ok so guide to making this thing
 */
 
 namespace Lotus.Roles.RoleGroups.Crew;
+
+public class Handler : Crewmate
+{
+    
+    [RoleAction(RoleActionType.MyVote)]
+    public void SelectPlayerToGuess(Optional<PlayerControl> player, ActionHandle handle)
+    {
+        handle.Cancel();
+        VoteResult result = voteSelector.CastVote(player);
+        switch (result.VoteResultType)
+        {
+            
+            default:
+            throw new ArgumentOutOfRangeException();
+        }
+    }
+}
