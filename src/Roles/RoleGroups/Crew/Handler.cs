@@ -9,3 +9,5 @@ ok so guide to making this thing
 7. if the attack blasts through the handler's bow wow or the target is revealed it doesn't trigger a tic
 8. make people aware of being tracked
 */
+
+namespace Lotus.Roles.RoleGroups.Crew;
